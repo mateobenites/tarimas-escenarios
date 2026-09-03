@@ -215,3 +215,166 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 });
+
+// ==========================================================================
+// HEADER TRUSS / SCAFFOLDING BACKGROUND ANIMATION
+// ==========================================================================
+(function() {
+  var canvas = document.getElementById('headerTrussCanvas');
+  if (!canvas) return;
+
+  var ctx = canvas.getContext('2d');
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Configuration
+  var config = {
+    cellSize: 55,          // Grid cell size in px
+    lineColor: 'rgba(0, 0, 0, 0.045)',    // Very subtle gray lines
+    nodeColor: 'rgba(0, 0, 0, 0.06)',     // Node dots slightly more visible
+    diagonalColor: 'rgba(0, 0, 0, 0.025)', // Cross-bracing even lighter
+    lineWidth: 1,
+    nodeRadius: 2,
+    animDuration: 3000,    // Total assembly animation duration (ms)
+    driftSpeed: 0.15       // Horizontal drift speed (px per frame)
+  };
+
+  var offsetX = 0;
+  var startTime = Date.now();
+  var animFrame = null;
+
+  function resize() {
+    var rect = canvas.parentElement.getBoundingClientRect();
+    var dpr = window.devicePixelRatio || 1;
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  // Easing function: smooth ease-out
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function draw() {
+    var w = canvas.width / (window.devicePixelRatio || 1);
+    var h = canvas.height / (window.devicePixelRatio || 1);
+    var cell = config.cellSize;
+    var elapsed = Date.now() - startTime;
+    var globalProgress = Math.min(elapsed / config.animDuration, 1);
+
+    ctx.clearRect(0, 0, w, h);
+
+    // Slow horizontal drift for "alive" feeling
+    if (!prefersReducedMotion) {
+      offsetX += config.driftSpeed;
+      if (offsetX >= cell) offsetX -= cell;
+    }
+
+    var cols = Math.ceil(w / cell) + 2;
+    var rows = Math.ceil(h / cell) + 2;
+    var baseX = -cell + (offsetX % cell);
+    var baseY = -cell / 2;
+
+    // Calculate staggered progress for each column (left to right assembly)
+    for (var col = 0; col < cols; col++) {
+      for (var row = 0; row < rows; row++) {
+        var x = baseX + col * cell;
+        var y = baseY + row * cell;
+
+        // Stagger: columns assemble left-to-right, rows top-to-bottom
+        var staggerDelay = (col * 0.04) + (row * 0.08);
+        var localProgress = easeOutCubic(Math.max(0, Math.min(1, (globalProgress - staggerDelay) * 3)));
+
+        if (localProgress <= 0) continue;
+
+        // Draw horizontal beam (grows from left)
+        if (col < cols - 1) {
+          var beamLength = cell * localProgress;
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.lineTo(x + beamLength, y);
+          ctx.strokeStyle = config.lineColor;
+          ctx.lineWidth = config.lineWidth;
+          ctx.stroke();
+        }
+
+        // Draw vertical beam (grows from top)
+        if (row < rows - 1) {
+          var vBeamLength = cell * localProgress;
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.lineTo(x, y + vBeamLength);
+          ctx.strokeStyle = config.lineColor;
+          ctx.lineWidth = config.lineWidth;
+          ctx.stroke();
+        }
+
+        // Draw diagonal cross-bracing (appears after beams)
+        if (col < cols - 1 && row < rows - 1) {
+          var diagProgress = easeOutCubic(Math.max(0, Math.min(1, (globalProgress - staggerDelay - 0.15) * 3)));
+          if (diagProgress > 0) {
+            // Only draw one diagonal per cell (alternating pattern)
+            if ((col + row) % 2 === 0) {
+              ctx.beginPath();
+              ctx.moveTo(x, y);
+              ctx.lineTo(x + cell * diagProgress, y + cell * diagProgress);
+              ctx.strokeStyle = config.diagonalColor;
+              ctx.lineWidth = config.lineWidth * 0.7;
+              ctx.stroke();
+            } else {
+              ctx.beginPath();
+              ctx.moveTo(x + cell, y);
+              ctx.lineTo(x + cell - cell * diagProgress, y + cell * diagProgress);
+              ctx.strokeStyle = config.diagonalColor;
+              ctx.lineWidth = config.lineWidth * 0.7;
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Draw node dot at intersection
+        if (localProgress > 0.5) {
+          var nodeOpacity = (localProgress - 0.5) * 2; // Fade in from 0.5 to 1
+          ctx.beginPath();
+          ctx.arc(x, y, config.nodeRadius, 0, Math.PI * 2);
+          ctx.fillStyle = config.nodeColor.replace('0.06', (0.06 * nodeOpacity).toFixed(3));
+          ctx.fill();
+        }
+      }
+    }
+
+    // Subtle pulsing glow on a few random nodes after assembly
+    if (globalProgress >= 1 && !prefersReducedMotion) {
+      var pulseTime = (elapsed - config.animDuration) * 0.001;
+      for (var p = 0; p < 3; p++) {
+        // Deterministic "random" positions based on p
+        var px = ((p * 137 + 50) % cols) * cell + baseX;
+        var py = ((p * 89 + 20) % rows) * cell + baseY;
+        var pulseScale = 0.5 + 0.5 * Math.sin(pulseTime * 1.5 + p * 2.1);
+        
+        ctx.beginPath();
+        ctx.arc(px, py, config.nodeRadius + 2 * pulseScale, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(200, 0, 0, ' + (0.08 * pulseScale).toFixed(3) + ')';
+        ctx.fill();
+      }
+    }
+
+    animFrame = requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener('resize', function() {
+    resize();
+  });
+
+  if (prefersReducedMotion) {
+    // Draw a single static frame at full progress
+    startTime = Date.now() - config.animDuration;
+    draw();
+    cancelAnimationFrame(animFrame);
+  } else {
+    draw();
+  }
+})();
