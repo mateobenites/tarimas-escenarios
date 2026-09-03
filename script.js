@@ -380,21 +380,25 @@ document.addEventListener('DOMContentLoaded', function() {
 })();
 
 // ==========================================================================
-// HERO SECTION: CYCLIC TRUSS ASSEMBLY / DISASSEMBLY ANIMATION
+// HERO SECTION: FLOATING PARTICLES BACKGROUND
 // ==========================================================================
 (function() {
-  var canvas = document.getElementById('heroTrussCanvas');
+  var canvas = document.getElementById('heroParticlesCanvas');
   if (!canvas) return;
 
   var ctx = canvas.getContext('2d');
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var dpr = 1;
   var W = 0;
   var H = 0;
+  var particles = [];
+  var particleCount = 60;
+  var connectionDistance = 120;
+  var mouseX = -1000;
+  var mouseY = -1000;
 
   function resize() {
     var rect = canvas.parentElement.getBoundingClientRect();
-    dpr = window.devicePixelRatio || 1;
+    var dpr = window.devicePixelRatio || 1;
     W = rect.width;
     H = rect.height;
     canvas.width = W * dpr;
@@ -402,173 +406,120 @@ document.addEventListener('DOMContentLoaded', function() {
     canvas.style.width = W + 'px';
     canvas.style.height = H + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    // Adjust particle count based on screen width
+    particleCount = Math.max(25, Math.floor(W * H / 15000));
+    if (particleCount > 80) particleCount = 80;
   }
 
-  // A "structure" is a small rectangular truss that builds top-down then fades
-  var structures = [];
-  var maxStructures = 6;
-  var spawnInterval = 2200; // ms between new spawns
-  var lastSpawn = 0;
-
-  function createStructure(now) {
-    var cellSize = 35 + Math.random() * 25; // 35-60px cells
-    var cols = 2 + Math.floor(Math.random() * 4); // 2-5 columns wide
-    var rows = 3 + Math.floor(Math.random() * 5); // 3-7 rows tall
-    var structW = cols * cellSize;
-    var x = Math.random() * (W - structW);
-    var y = -10; // Start slightly above viewport
-
+  function createParticle() {
     return {
-      x: x,
-      y: y,
-      cellSize: cellSize,
-      cols: cols,
-      rows: rows,
-      createdAt: now,
-      buildDuration: 2500 + Math.random() * 1500, // 2.5-4s to build
-      holdDuration: 1500 + Math.random() * 1000,  // 1.5-2.5s hold
-      fadeDuration: 1800 + Math.random() * 800,   // 1.8-2.6s to fade
-      fallSpeed: 0.3 + Math.random() * 0.4        // Slow downward drift
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: -0.15 - Math.random() * 0.35, // Mostly float upward
+      radius: 1.5 + Math.random() * 2,
+      opacity: 0.08 + Math.random() * 0.15,
+      isAccent: Math.random() < 0.12 // ~12% chance of red accent
     };
   }
 
-  function easeOutCubic(t) {
-    return 1 - Math.pow(1 - t, 3);
-  }
-
-  function easeInCubic(t) {
-    return t * t * t;
-  }
-
-  function drawStructure(s, now) {
-    var age = now - s.createdAt;
-    var totalLife = s.buildDuration + s.holdDuration + s.fadeDuration;
-
-    // Remove if fully faded
-    if (age > totalLife) return false;
-
-    // Calculate global opacity (1 during build+hold, fading during fade phase)
-    var globalAlpha = 1;
-    if (age > s.buildDuration + s.holdDuration) {
-      var fadeProgress = (age - s.buildDuration - s.holdDuration) / s.fadeDuration;
-      globalAlpha = 1 - easeInCubic(Math.min(fadeProgress, 1));
+  function initParticles() {
+    particles = [];
+    for (var i = 0; i < particleCount; i++) {
+      particles.push(createParticle());
     }
-
-    if (globalAlpha <= 0.01) return false;
-
-    // Build progress (0 to 1 during build phase)
-    var buildProgress = Math.min(age / s.buildDuration, 1);
-
-    // Slow drift downward
-    var currentY = s.y + age * s.fallSpeed * 0.016;
-
-    var cell = s.cellSize;
-
-    for (var row = 0; row < s.rows; row++) {
-      // Each row appears staggered top-to-bottom
-      var rowDelay = row / s.rows;
-      var rowProgress = easeOutCubic(Math.max(0, Math.min(1, (buildProgress - rowDelay * 0.7) * (1 / 0.3))));
-
-      if (rowProgress <= 0) continue;
-
-      for (var col = 0; col < s.cols; col++) {
-        var px = s.x + col * cell;
-        var py = currentY + row * cell;
-
-        // Horizontal beam
-        if (col < s.cols - 1) {
-          var beamLen = cell * rowProgress;
-          ctx.beginPath();
-          ctx.moveTo(px, py);
-          ctx.lineTo(px + beamLen, py);
-          ctx.strokeStyle = 'rgba(0, 0, 0, ' + (0.1 * globalAlpha).toFixed(3) + ')';
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-
-        // Vertical beam (grows downward)
-        if (row < s.rows - 1) {
-          var vLen = cell * rowProgress;
-          ctx.beginPath();
-          ctx.moveTo(px, py);
-          ctx.lineTo(px, py + vLen);
-          ctx.strokeStyle = 'rgba(0, 0, 0, ' + (0.1 * globalAlpha).toFixed(3) + ')';
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-
-        // Diagonal cross-bracing
-        if (col < s.cols - 1 && row < s.rows - 1) {
-          var diagDelay = 0.15;
-          var diagProgress = easeOutCubic(Math.max(0, Math.min(1, (buildProgress - rowDelay * 0.7 - diagDelay) * (1 / 0.3))));
-          if (diagProgress > 0) {
-            ctx.beginPath();
-            if ((col + row) % 2 === 0) {
-              ctx.moveTo(px, py);
-              ctx.lineTo(px + cell * diagProgress, py + cell * diagProgress);
-            } else {
-              ctx.moveTo(px + cell, py);
-              ctx.lineTo(px + cell - cell * diagProgress, py + cell * diagProgress);
-            }
-            ctx.strokeStyle = 'rgba(0, 0, 0, ' + (0.06 * globalAlpha).toFixed(3) + ')';
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-          }
-        }
-
-        // Node dot
-        if (rowProgress > 0.5) {
-          var nodeAlpha = (rowProgress - 0.5) * 2 * globalAlpha;
-          ctx.beginPath();
-          ctx.arc(px, py, 2, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(0, 0, 0, ' + (0.14 * nodeAlpha).toFixed(3) + ')';
-          ctx.fill();
-        }
-      }
-    }
-
-    return true; // Still alive
   }
 
   function draw() {
-    var now = Date.now();
     ctx.clearRect(0, 0, W, H);
 
-    // Spawn new structures periodically
-    if (now - lastSpawn > spawnInterval && structures.length < maxStructures) {
-      structures.push(createStructure(now));
-      lastSpawn = now;
+    // Update and draw particles
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+
+      if (!prefersReducedMotion) {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Wrap around edges
+        if (p.y < -10) {
+          p.y = H + 10;
+          p.x = Math.random() * W;
+        }
+        if (p.x < -10) p.x = W + 10;
+        if (p.x > W + 10) p.x = -10;
+      }
+
+      // Draw particle
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      if (p.isAccent) {
+        ctx.fillStyle = 'rgba(200, 30, 30, ' + (p.opacity * 1.5) + ')';
+      } else {
+        ctx.fillStyle = 'rgba(44, 53, 64, ' + p.opacity + ')';
+      }
+      ctx.fill();
     }
 
-    // Draw and filter out dead structures
-    var alive = [];
-    for (var i = 0; i < structures.length; i++) {
-      if (drawStructure(structures[i], now)) {
-        alive.push(structures[i]);
+    // Draw connections between nearby particles
+    for (var i = 0; i < particles.length; i++) {
+      for (var j = i + 1; j < particles.length; j++) {
+        var dx = particles[i].x - particles[j].x;
+        var dy = particles[i].y - particles[j].y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < connectionDistance) {
+          var alpha = (1 - dist / connectionDistance) * 0.08;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = 'rgba(44, 53, 64, ' + alpha.toFixed(3) + ')';
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
       }
     }
-    structures = alive;
+
+    // Mouse interaction: draw connections to nearby particles
+    for (var i = 0; i < particles.length; i++) {
+      var dx = particles[i].x - mouseX;
+      var dy = particles[i].y - mouseY;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < connectionDistance * 1.5) {
+        var alpha = (1 - dist / (connectionDistance * 1.5)) * 0.15;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(mouseX, mouseY);
+        ctx.strokeStyle = 'rgba(200, 30, 30, ' + alpha.toFixed(3) + ')';
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+      }
+    }
 
     requestAnimationFrame(draw);
   }
 
   resize();
-  window.addEventListener('resize', resize);
+  initParticles();
+  window.addEventListener('resize', function() {
+    resize();
+    initParticles();
+  });
 
-  if (prefersReducedMotion) {
-    // Draw a few static structures
-    var now = Date.now();
-    for (var i = 0; i < 3; i++) {
-      var s = createStructure(now - 3000 - i * 1000);
-      structures.push(s);
-    }
-    draw();
-  } else {
-    // Seed initial structures
-    var now = Date.now();
-    structures.push(createStructure(now - 2000));
-    structures.push(createStructure(now - 800));
-    lastSpawn = now;
-    draw();
-  }
+  // Track mouse position relative to hero section
+  canvas.parentElement.addEventListener('mousemove', function(e) {
+    var rect = canvas.parentElement.getBoundingClientRect();
+    mouseX = e.clientX - rect.left;
+    mouseY = e.clientY - rect.top;
+  });
+
+  canvas.parentElement.addEventListener('mouseleave', function() {
+    mouseX = -1000;
+    mouseY = -1000;
+  });
+
+  draw();
 })();
+
