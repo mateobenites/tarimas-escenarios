@@ -1972,3 +1972,76 @@ textarea.form-control {
   height: 48px;
   max-width: 140px;
 }
+
+/* ==========================================================================
+   STATS GLASSPAD (Trayectoria Section)
+   ========================================================================== */
+.stats-glasspad {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--border-radius-lg);
+  padding: 3rem 4rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.stat-number {
+  display: block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--text-light);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #a0a5b0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+  display: block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent-red);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+}
+
+.stat-desc {
+  font-size: 0.95rem;
+  color: var(--text-light-muted);
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0) 100%);
+}
+
+@media (max-width: 900px) {
+  .stats-glasspad {
+    flex-direction: column;
+    gap: 3rem;
+    padding: 3rem 2rem;
+  }
+  
+  .stat-divider {
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0) 100%);
+  }
+}
