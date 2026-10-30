@@ -15,11 +15,12 @@ Este documento define cómo se organiza el trabajo en este proyecto. Hay tres ro
 
 ### Decisiones tomadas
 
-- **Sin back-end.** La conversión es un link `wa.me` con el mensaje pre-armado del lado del cliente, así que no hay servidor, base de datos ni credenciales. El rol de Back-end queda reducido a esa integración.
-- **Sin formulario que envíe datos.** El formulario de contacto no manda nada: arma el texto y abre WhatsApp. El dueño recibe la consulta ya estructurada en su celular.
+- **Sin back-end.** La conversión es un link `wa.me` con un saludo pre-armado, así que no hay servidor, base de datos ni credenciales. El rol de Back-end queda reducido a esa integración.
+- **Sin formulario de contacto.** Se sacó el "Armá tu consulta": el público suele ser gente grande que prefiere escribir directo. La sección Contacto ofrece solo dos tarjetas grandes, WhatsApp (principal) y email, con tipografía amplia.
 - **Tema claro: blanco + rojo.** Definido por el logo, que tiene fondo blanco y trazo rojo. Negro (`--ink`) solo como color de texto y en la banda de Seguridad, que va en oscuro para darle peso al argumento de certificaciones.
 - **Logo vectorizado a SVG.** Se reemplazó el WebP por una versión trazada (vtracer) para tener el logo real como pieza principal del hero, no solo en nav/footer. El fondo del trazo sigue siendo blanco sólido (no tiene alpha), así que igual va solo sobre superficies claras. Si el usuario consigue el logo original en PNG/SVG con transparencia, conviene reemplazar este trazado por ese archivo — el trazado pierde algo de nitidez en el detalle fino de las líneas.
 - **`og:image` sigue siendo la foto del hotel, no el logo.** WhatsApp/Facebook no renderizan SVG en la vista previa del link, así que el logo no sirve como imagen social.
+- **Armado por capas en lugar del control de altura.** El slider de altura se reemplazó por una secuencia fija con scroll (patas → estructura → piso → terminación → luces) sobre panel oscuro. Solo usa datos ya confirmados (medidas del módulo, fenólico 25 mm, hierro zincado, pollera negro mate, memoria de cálculo).
 - **Esquema isométrico en SVG.** Se mantiene en la sección "El sistema" aunque ya haya fotos: muestra la estructura de caños y patas que en las fotos queda tapada por la pollera.
 
 ---
@@ -90,7 +91,7 @@ No decide: diseño visual ni contenido de marketing.
 
 - `index.html` — toda la página (una sola vista, sin router).
 - `styles.css` — tokens de diseño en `:root` y estilos por sección.
-- `script.js` — link de WhatsApp, armador de consulta, control de altura y animaciones de scroll.
+- `script.js` — link de WhatsApp, secuencia "Anatomía de un escenario" (SVG isométrico generado en JS que se arma capa por capa con el scroll) y animaciones de reveal.
 - `img/` — logo y fotos. Las fotos se recomprimieron a calidad 82 (de 867 KB a ~200 KB la más pesada).
 
 ## Próximo paso

@@ -229,55 +229,65 @@
         </div>
       </div>
 
-      <div class="height reveal">
-        <div class="height__panel">
-          <p class="eyebrow"><span class="eyebrow__dot"></span>Altura regulable</p>
-          <h3 class="height__title">Movés el control y ves de qué estamos hablando.</h3>
-          <p class="height__txt">Desde una tarima baja para una mesa de panel hasta un escenario de dos metros para un plenario. La misma estructura, reguladas las patas.</p>
+      <div class="build" id="build">
+        <div class="build__pin">
+          <div class="build__panel">
+            <div class="build__copy">
+              <p class="eyebrow"><span class="eyebrow__dot"></span>Anatomía de un escenario</p>
+              <h3 class="build__title">Cómo se arma, capa por capa.</h3>
 
-          <p class="height__read"><output id="hOut" for="hRange">0,60</output><span>metros</span></p>
+              <ol class="build__steps" id="buildSteps">
+                <li class="build__step is-on">
+                  <button type="button" data-go="0"><span class="build__n">01</span><span>Patas regulables</span></button>
+                  <div class="build__body"><div>
+                    <p>Cada pata se regula por separado: así se llega a la altura que pide la producción y se corrigen los desniveles del piso.</p>
+                    <p class="build__spec">0,30 – 2,00 m de altura</p>
+                  </div></div>
+                </li>
+                <li class="build__step">
+                  <button type="button" data-go="1"><span class="build__n">02</span><span>Estructura de hierro</span></button>
+                  <div class="build__body"><div>
+                    <p>Caño de hierro estructural de alta resistencia, con tratamiento zincado anticorrosión. Encastre rápido tridimensional, de alta precisión.</p>
+                    <p class="build__spec">Hierro zincado</p>
+                  </div></div>
+                </li>
+                <li class="build__step">
+                  <button type="button" data-go="2"><span class="build__n">03</span><span>Piso fenólico</span></button>
+                  <div class="build__body"><div>
+                    <p>Módulos de terciado fenólico que se combinan para llegar a cualquier superficie, a la medida del salón.</p>
+                    <p class="build__spec">1,05 × 0,80 m · 25 mm</p>
+                  </div></div>
+                </li>
+                <li class="build__step">
+                  <button type="button" data-go="3"><span class="build__n">04</span><span>Terminación</span></button>
+                  <div class="build__body"><div>
+                    <p>Frentín y pollera perimetral en negro mate, alfombrado de alta densidad y ni un herraje a la vista.</p>
+                    <p class="build__spec">Lista para cámara</p>
+                  </div></div>
+                </li>
+                <li class="build__step">
+                  <button type="button" data-go="4"><span class="build__n">05</span><span>Listo para el evento</span></button>
+                  <div class="build__body"><div>
+                    <p>Se entrega con memoria de cálculo firmada por ingeniero matriculado. Vos te ocupás del evento.</p>
+                    <a class="btn btn--primary btn--sm js-wa" href="#" data-wa-default>
+                      <svg class="ico-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.27-.2-.57-.34M12.05 21.8a9.87 9.87 0 0 1-5.03-1.38l-.36-.22-3.74.99 1-3.65-.24-.38a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.89-9.89 9.89m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.49-8.4"/></svg>
+                      <span>Pedir presupuesto</span>
+                    </a>
+                  </div></div>
+                </li>
+              </ol>
+            </div>
 
-          <label class="sr" for="hRange">Altura del escenario en metros</label>
-          <input class="height__range" id="hRange" type="range" min="0.30" max="2.00" step="0.05" value="0.60">
-          <div class="height__ticks" aria-hidden="true"><span>0,30 m</span><span>1,15 m</span><span>2,00 m</span></div>
-
-          <p class="height__use" id="hUse">Ideal para mesas de panel y presentaciones en salones chicos.</p>
-        </div>
-
-        <div class="height__stage">
-          <svg viewBox="0 0 440 340" role="img" aria-labelledby="evTitle">
-            <title id="evTitle">Vista frontal de un escenario de altura regulable junto a una persona de 1,70 m de referencia</title>
-            <defs>
-              <marker id="arw" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M2,2 L9,6 L2,10 Z" fill="#C1272D"/>
-              </marker>
-            </defs>
-
-            <g class="ev-person">
-              <circle cx="70" cy="142" r="12"/>
-              <rect x="56" y="157" width="28" height="64" rx="13"/>
-              <rect x="47" y="160" width="8" height="56" rx="4"/>
-              <rect x="85" y="160" width="8" height="56" rx="4"/>
-              <rect x="59" y="219" width="10" height="81" rx="5"/>
-              <rect x="73" y="219" width="10" height="81" rx="5"/>
-            </g>
-            <text class="ev-label" x="70" y="320" text-anchor="middle">1,70 m</text>
-
-            <g class="ev-stage">
-              <rect id="evLeg1" x="172" y="200" width="7" height="100" rx="1"/>
-              <rect id="evLeg2" x="288" y="200" width="7" height="100" rx="1"/>
-              <rect id="evLeg3" x="404" y="200" width="7" height="100" rx="1"/>
-              <rect id="evBrace" x="172" y="286" width="239" height="4" rx="1"/>
-              <rect id="evDeck" x="160" y="188" width="260" height="12" rx="2"/>
-            </g>
-
-            <g class="ev-dim">
-              <line id="evTick" x1="132" y1="188" x2="176" y2="188" stroke-dasharray="4 4" stroke-opacity=".5"/>
-              <line id="evDim" x1="140" y1="300" x2="140" y2="188" marker-start="url(#arw)" marker-end="url(#arw)"/>
-            </g>
-
-            <line class="ev-ground" x1="10" y1="300" x2="430" y2="300"/>
-          </svg>
+            <div class="build__art">
+              <svg id="buildSvg" viewBox="-230 -250 560 500" role="img" aria-labelledby="buildTitle">
+                <title id="buildTitle">Escenario modular en vista isométrica que se arma capa por capa: patas regulables, estructura de hierro, piso fenólico y terminación con pollera y alfombra</title>
+              </svg>
+              <div class="build__meter" aria-hidden="true">
+                <span><b id="buildNow">01</b> / 05</span>
+                <span class="build__bar"><i id="buildBar"></i></span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -400,75 +410,30 @@
 
   <!-- ══════════ CONTACTO ══════════ -->
   <section class="sec sec--contact" id="contacto">
-    <div class="wrap contact">
+    <div class="wrap">
 
-      <div class="contact__copy reveal">
+      <header class="contact__head reveal">
         <p class="eyebrow"><span class="eyebrow__dot"></span>Contacto</p>
         <h2>Contanos tu evento y te armamos el presupuesto.</h2>
-        <p class="sec__lead">La forma más rápida es WhatsApp: te responde directamente la persona que arma los presupuestos y coordina los montajes.</p>
+        <p class="sec__lead">Escribinos como te quede más cómodo. Te responde directamente la persona que arma los presupuestos y coordina los montajes.</p>
+      </header>
 
-        <div class="contact__direct">
-          <a class="contact__wa js-wa" href="#" data-wa-default>
-            <svg class="ico-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.27-.2-.57-.34M12.05 21.8a9.87 9.87 0 0 1-5.03-1.38l-.36-.22-3.74.99 1-3.65-.24-.38a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.89-9.89 9.89m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.49-8.4"/></svg>
-            <span><small>WhatsApp</small><b>11 3332-0622</b></span>
-          </a>
-          <a class="contact__mail" href="mailto:tyescenarios@gmail.com">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-            <span><small>Email</small><b>tyescenarios@gmail.com</b></span>
-          </a>
-        </div>
+      <div class="contact__ways">
+        <a class="way way--wa js-wa reveal" href="#" data-wa-default>
+          <span class="way__ico"><svg class="ico-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.27-.2-.57-.34M12.05 21.8a9.87 9.87 0 0 1-5.03-1.38l-.36-.22-3.74.99 1-3.65-.24-.38a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.89-9.89 9.89m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.49-8.4"/></svg></span>
+          <span class="way__k">WhatsApp</span>
+          <b class="way__v">11 3332-0622</b>
+          <span class="way__d">Mandanos un mensaje o un audio. Es la forma más rápida.</span>
+          <span class="way__go">Abrir WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="way way--mail reveal" href="mailto:tyescenarios@gmail.com">
+          <span class="way__ico"><svg viewBox="52 42 88 66" aria-hidden="true"><path fill="#4285F4" d="M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6"/><path fill="#34A853" d="M120 108h14c3.32 0 6-2.69 6-6V59l-20 15"/><path fill="#FBBC04" d="M120 48v26l20-15v-8c0-7.42-8.47-11.65-14.4-7.2"/><path fill="#EA4335" d="M72 74V48l24 18 24-18v26L96 92"/><path fill="#C5221F" d="M52 51v8l20 15V48l-5.6-4.2c-5.94-4.45-14.4-.22-14.4 7.2"/></svg></span>
+          <span class="way__k">Gmail</span>
+          <b class="way__v">tyescenarios@gmail.com</b>
+          <span class="way__d">Si preferís mandar planos, fotos del salón o más detalle.</span>
+          <span class="way__go">Escribir un email <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
       </div>
-
-      <form class="waform reveal" id="waForm" novalidate>
-        <h3 class="waform__title">Armá tu consulta</h3>
-        <p class="waform__sub">Completá lo que sepas y abrimos WhatsApp con el mensaje listo. Todos los campos son opcionales.</p>
-
-        <div class="waform__grid">
-          <p class="field">
-            <label for="fTipo">Tipo de evento</label>
-            <select id="fTipo">
-              <option value="">Sin especificar</option>
-              <option>Evento corporativo</option>
-              <option>Congreso o convención</option>
-              <option>Lanzamiento de producto</option>
-              <option>Producción audiovisual</option>
-              <option>Evento social</option>
-              <option>Otro</option>
-            </select>
-          </p>
-          <p class="field">
-            <label for="fMedida">Medida aproximada</label>
-            <input id="fMedida" type="text" placeholder="Ej: 6 × 4 m" autocomplete="off">
-          </p>
-          <p class="field">
-            <label for="fAltura">Altura</label>
-            <select id="fAltura">
-              <option value="">Sin especificar</option>
-              <option>0,30 m</option>
-              <option>0,40 m</option>
-              <option>0,60 m</option>
-              <option>0,80 m</option>
-              <option>1,00 m</option>
-              <option>Más de 1,00 m</option>
-              <option>A definir con asesoramiento</option>
-            </select>
-          </p>
-          <p class="field">
-            <label for="fFecha">Fecha del evento</label>
-            <input id="fFecha" type="date">
-          </p>
-          <p class="field field--full">
-            <label for="fLugar">Lugar o salón</label>
-            <input id="fLugar" type="text" placeholder="Ej: Hilton Puerto Madero" autocomplete="off">
-          </p>
-        </div>
-
-        <button class="btn btn--primary btn--lg btn--block" type="submit">
-          <svg class="ico-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.27-.2-.57-.34M12.05 21.8a9.87 9.87 0 0 1-5.03-1.38l-.36-.22-3.74.99 1-3.65-.24-.38a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.89-9.89 9.89m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.49-8.4"/></svg>
-          <span>Abrir WhatsApp con estos datos</span>
-        </button>
-        <p class="waform__note">Se abre WhatsApp con el mensaje ya escrito. No se envía nada desde esta página.</p>
-      </form>
     </div>
   </section>
 
