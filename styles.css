@@ -668,6 +668,77 @@ img, svg { display: block; max-width: 100%; }
 }
 .foot__bar a:hover { color: var(--red); }
 
+/* ─────────────────────────────  LEGALES  ───────────────────────────── */
+.legal { padding-block: clamp(48px, 7vw, 96px) var(--sec-y); }
+.legal__in {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  grid-template-areas: "head head" "toc body";
+  gap: clamp(28px, 4vw, 64px);
+  max-width: 1080px;
+}
+.legal__head { grid-area: head; max-width: 720px; }
+.legal__head h1 { font-size: clamp(34px, 5vw, 58px); }
+.legal__lead { margin-top: 16px; font-size: clamp(17px, 1.6vw, 19px); color: var(--muted); }
+.legal__date { margin-top: 18px; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; color: var(--dim); }
+
+.legal__toc { grid-area: toc; position: sticky; top: 104px; align-self: start; }
+.legal__toc-t {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .13em;
+  text-transform: uppercase; color: var(--dim); margin-bottom: 12px;
+}
+.legal__toc ol { counter-reset: toc; border-left: 1px solid var(--line); }
+.legal__toc li { counter-increment: toc; }
+.legal__toc a {
+  display: flex; gap: 10px;
+  padding: 7px 0 7px 16px; margin-left: -1px;
+  border-left: 2px solid transparent;
+  font-size: 14.5px; color: var(--muted);
+  transition: color .18s, border-color .18s;
+}
+.legal__toc a::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: var(--mono); font-size: 11px; color: var(--dim); padding-top: 3px;
+}
+.legal__toc a:hover { color: var(--red); border-left-color: var(--red); }
+
+.legal__body { grid-area: body; max-width: 720px; }
+.legal__body section { padding-block: 34px; border-top: 1px solid var(--line); scroll-margin-top: 96px; }
+.legal__body section:first-child { padding-top: 0; border-top: 0; }
+.legal__body h2 {
+  display: flex; align-items: baseline; gap: 14px;
+  font-size: clamp(22px, 2.3vw, 27px); font-weight: 700; margin-bottom: 16px;
+}
+.legal__body h2 span { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--red); letter-spacing: .06em; }
+.legal__body p, .legal__body li { font-size: 17px; line-height: 1.75; color: #3C3E45; }
+.legal__body p + p, .legal__body p + ul, .legal__body ul + p { margin-top: 14px; }
+.legal__body ul { display: grid; gap: 10px; }
+.legal__body li { position: relative; padding-left: 22px; }
+.legal__body li::before {
+  content: ""; position: absolute; left: 2px; top: .7em;
+  width: 6px; height: 6px; background: var(--red); transform: rotate(45deg);
+}
+.legal__body b { color: var(--ink); font-weight: 600; }
+.legal__body a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+.legal__body section:first-child ul {
+  padding: 26px 28px; border-radius: var(--r-lg);
+  background: var(--bg-alt); border: 1px solid var(--line);
+}
+.legal__note {
+  padding: 18px 20px; border-left: 2px solid var(--line-str);
+  background: var(--bg-alt); border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  font-size: 14px !important; line-height: 1.65 !important; color: var(--muted) !important;
+}
+.ph { background: #FFF3C4; color: #6B4E00; padding: 1px 6px; border-radius: 4px; font-family: var(--mono); font-size: .85em; }
+
+.foot__legal { display: flex; gap: 22px; flex-wrap: wrap; }
+.foot__legal a[aria-current] { color: var(--ink); }
+
+@media (max-width: 860px) {
+  .legal__in { grid-template-columns: 1fr; grid-template-areas: "head" "toc" "body"; }
+  .legal__toc { position: static; }
+}
+
 /* ───────────────────────────  WHATSAPP FLOAT  ─────────────────────────── */
 .wafloat {
   position: fixed; right: 18px; bottom: 18px; z-index: 90;

@@ -92,6 +92,7 @@ No decide: diseño visual ni contenido de marketing.
 - `index.html` — toda la página (una sola vista, sin router).
 - `styles.css` — tokens de diseño en `:root` y estilos por sección.
 - `script.js` — link de WhatsApp, secuencia "Anatomía de un escenario" (SVG isométrico generado en JS que se arma capa por capa con el scroll) y animaciones de reveal.
+- `terminos.html` y `privacidad.html` — páginas legales, enlazadas desde el footer. Reusan `styles.css` y no cargan `script.js`.
 - `img/` — logo y fotos. Las fotos se recomprimieron a calidad 82 (de 867 KB a ~200 KB la más pesada).
 
 ## Próximo paso
