@@ -271,6 +271,11 @@ function updateChrome() {
 addEventListener('scroll', updateChrome, { passive: true });
 updateChrome();
 
+/* El logo del menú aparece recién cuando el de la portada sale de pantalla */
+new IntersectionObserver(([entry]) => {
+  nav.classList.toggle('hide-brand', entry.isIntersecting);
+}, { rootMargin: '-74px 0px 0px' }).observe(document.querySelector('.hero__logo'));
+
 /* ── Reveal ─────────────────────────────────────────────────────── */
 const revealObserver = new IntersectionObserver((entries, obs) => {
   entries.forEach((entry, i) => {
