@@ -43,14 +43,14 @@
   </div>
 </header>
 
-<main id="contenido">
+<main id="contenido" tabindex="-1">
 
   <!-- ══════════ HERO ══════════ -->
   <section class="hero" id="top">
     <div class="wrap hero__in">
 
       <div class="hero__copy">
-        <img class="hero__logo" src="img/logo.svg" width="1024" height="520" loading="eager" alt="Tarimas y Escenarios S.R.L.">
+        <img class="hero__logo" src="img/logo.svg" width="1024" height="520" loading="eager" fetchpriority="high" alt="Tarimas y Escenarios S.R.L.">
 
         <h1 class="hero__title">
           Escenarios modulares para eventos que <em>no admiten errores</em>.
@@ -67,7 +67,7 @@
       </div>
 
       <figure class="hero__photo">
-        <img src="img/escenario-hotel.jpg" width="1024" height="1024" loading="eager"
+        <img src="img/escenario-hotel.jpg" width="1024" height="1024" loading="eager" fetchpriority="high"
              alt="Escenario montado en el salón de un hotel, con pollera y frentín en negro mate, escalera de acceso con baranda y pantalla LED de fondo">
       </figure>
     </div>
@@ -81,7 +81,7 @@
         <li><b>1994</b><span>Año de fundación</span></li>
         <li><b>+8.000</b><span>Tarimas ensambladas</span></li>
         <li><b>+250</b><span>Montajes por año</span></li>
-        <li><b>0,30–2,00 m</b><span>Rango de altura</span></li>
+        <li><b>0,30–2,00&nbsp;m</b><span>Rango de altura</span></li>
       </ul>
     </div>
   </section>
@@ -89,38 +89,34 @@
 
   <!-- ══════════ SERVICIOS ══════════ -->
   <section class="sec" id="servicios">
-    <div class="wrap">
-      <header class="sec__head reveal">
+    <div class="wrap services">
+      <header class="sec__head services__head reveal">
         <p class="eyebrow"><span class="eyebrow__dot"></span>Servicios</p>
         <h2>Todo lo que va debajo del evento.</h2>
         <p class="sec__lead">Nos ocupamos del escenario de punta a punta: lo definimos con vos, lo montamos y lo retiramos. Vos te ocupás de lo que pasa arriba.</p>
       </header>
 
-      <div class="cards">
-        <article class="card reveal">
-          <span class="card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3 21 8 12 13 3 8Z"/><path d="M3 13l9 5 9-5"/></svg></span>
-          <h3>Alquiler de tarimas y escenarios</h3>
-          <p>Sistema modular que se adapta a la medida del salón, a la altura que necesite la producción y a los desniveles del piso.</p>
-        </article>
+      <ul class="services__list">
+        <li class="reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 21 8 12 13 3 8Z"/><path d="M3 13l9 5 9-5"/></svg>
+          <div><h3>Alquiler de tarimas y escenarios</h3><p>Sistema modular que se adapta a la medida del salón, a la altura que necesite la producción y a los desniveles del piso.</p></div>
+        </li>
 
-        <article class="card reveal">
-          <span class="card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg></span>
-          <h3>Montaje y desmontaje</h3>
-          <p>Equipo propio y con oficio. Entramos y salimos en la ventana horaria que fija el salón, y retiramos al cierre del evento.</p>
-        </article>
+        <li class="reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg>
+          <div><h3>Montaje y desmontaje</h3><p>Equipo propio y con oficio. Entramos y salimos en la ventana horaria que fija el salón, y retiramos al cierre del evento.</p></div>
+        </li>
 
-        <article class="card reveal">
-          <span class="card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12Z"/></svg></span>
-          <h3>Asesoramiento técnico</h3>
-          <p>Si todavía no sabés qué medida o altura necesitás, lo resolvemos juntos antes de cotizar. Treinta años de montajes ayudan bastante.</p>
-        </article>
+        <li class="reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12Z"/></svg>
+          <div><h3>Asesoramiento técnico</h3><p>Si todavía no sabés qué medida o altura necesitás, lo resolvemos juntos antes de cotizar. 30 años de montajes ayudan bastante.</p></div>
+        </li>
 
-        <article class="card reveal">
-          <span class="card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="4" width="7" height="16" rx="1"/><rect x="14" y="4" width="7" height="16" rx="1"/></svg></span>
-          <h3>Panelería y cerramientos</h3>
-          <p>Fondos de escenario, divisiones y cerramientos con materiales que cuentan con certificación ignífuga oficial.</p>
-        </article>
-      </div>
+        <li class="reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1"/><rect x="14" y="4" width="7" height="16" rx="1"/></svg>
+          <div><h3>Panelería y cerramientos</h3><p>Fondos de escenario, divisiones y cerramientos con materiales que cuentan con certificación ignífuga oficial.</p></div>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -128,161 +124,35 @@
   <!-- ══════════ SISTEMA ══════════ -->
   <section class="sec sec--alt" id="sistema">
     <div class="wrap">
+      <header class="sec__head reveal">
+        <p class="eyebrow"><span class="eyebrow__dot"></span>El sistema</p>
+        <h2>Un sistema modular, no una tarima improvisada.</h2>
+        <p class="sec__lead">Trabajamos con un sistema tridimensional de encastre rápido. Los módulos se combinan para llegar a cualquier superficie y las patas regulables corrigen el desnivel del piso.</p>
+      </header>
 
-      <div class="sysintro">
-        <header class="sec__head sec__head--flush reveal">
-          <p class="eyebrow"><span class="eyebrow__dot"></span>El sistema</p>
-          <h2>Un sistema modular, no una tarima improvisada.</h2>
-          <p class="sec__lead">Trabajamos con un sistema tridimensional de encastre rápido. Los módulos se combinan para llegar a cualquier superficie y las patas regulables corrigen el desnivel del piso.</p>
-        </header>
-
-        <div class="sysintro__art reveal">
-          <svg class="iso" viewBox="-200 -110 560 420" role="img" aria-labelledby="isoTitle isoDesc">
-            <title id="isoTitle">Esquema isométrico de una tarima modular</title>
-            <desc id="isoDesc">Plataforma formada por seis módulos, apoyada sobre una estructura de caños de hierro con patas regulables.</desc>
-            <defs>
-              <linearGradient id="gDeck" x1="0" y1="0" x2=".5" y2="1">
-                <stop offset="0" stop-color="#C1272D" stop-opacity=".16"/>
-                <stop offset="1" stop-color="#C1272D" stop-opacity=".03"/>
-              </linearGradient>
-              <linearGradient id="gEdge" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#C1272D" stop-opacity=".55"/>
-                <stop offset="1" stop-color="#C1272D" stop-opacity=".22"/>
-              </linearGradient>
-            </defs>
-
-            <g class="iso-back" fill="none" stroke="#C1272D" stroke-width="2.4" stroke-linecap="round">
-              <path pathLength="1" d="M0,-52 L0,0"/>
-              <path pathLength="1" d="M90.9,0.5 L90.9,52.5"/>
-              <path pathLength="1" d="M181.9,53 L181.9,105"/>
-              <path pathLength="1" d="M-69.3,-12 L-69.3,40"/>
-              <path pathLength="1" d="M21.7,40.5 L21.7,92.5"/>
-              <path pathLength="1" d="M112.6,93 L112.6,145"/>
-              <path pathLength="1" d="M0,-10 L272.8,147.5"/>
-              <path pathLength="1" d="M-69.3,30 L203.5,187.5"/>
-              <path pathLength="1" d="M-138.6,70 L134.2,227.5"/>
-              <path pathLength="1" d="M0,-10 L-138.6,70"/>
-              <path pathLength="1" d="M90.9,42.5 L-47.6,122.5"/>
-              <path pathLength="1" d="M181.9,95 L43.3,175"/>
-              <path pathLength="1" d="M272.8,147.5 L134.2,227.5"/>
-            </g>
-
-            <g class="iso-front" fill="none" stroke="#C1272D" stroke-width="3" stroke-linecap="round">
-              <path pathLength="1" d="M272.8,105.5 L272.8,157.5"/>
-              <path pathLength="1" d="M203.5,145.5 L203.5,197.5"/>
-              <path pathLength="1" d="M134.2,185.5 L134.2,237.5"/>
-              <path pathLength="1" d="M43.3,133 L43.3,185"/>
-              <path pathLength="1" d="M-47.6,80.5 L-47.6,132.5"/>
-              <path pathLength="1" d="M-138.6,28 L-138.6,80"/>
-            </g>
-
-            <g class="iso-pads" fill="#C1272D" fill-opacity=".4">
-              <ellipse cx="272.8" cy="157.5" rx="7" ry="3.4"/>
-              <ellipse cx="203.5" cy="197.5" rx="7" ry="3.4"/>
-              <ellipse cx="134.2" cy="237.5" rx="7" ry="3.4"/>
-              <ellipse cx="43.3" cy="185" rx="7" ry="3.4"/>
-              <ellipse cx="-47.6" cy="132.5" rx="7" ry="3.4"/>
-              <ellipse cx="-138.6" cy="80" rx="7" ry="3.4"/>
-            </g>
-
-            <g class="iso-deck">
-              <path d="M272.8,97.5 L134.2,177.5 L134.2,185.5 L272.8,105.5 Z" fill="url(#gEdge)"/>
-              <path d="M134.2,177.5 L-138.6,20 L-138.6,28 L134.2,185.5 Z" fill="url(#gEdge)"/>
-              <path d="M0,-60 L272.8,97.5 L134.2,177.5 L-138.6,20 Z" fill="url(#gDeck)" stroke="#C1272D" stroke-opacity=".85" stroke-width="2.6" stroke-linejoin="round"/>
-              <g fill="none" stroke="#C1272D" stroke-opacity=".4" stroke-width="1.8">
-                <path pathLength="1" d="M90.9,-7.5 L-47.6,72.5"/>
-                <path pathLength="1" d="M181.9,45 L43.3,125"/>
-                <path pathLength="1" d="M-69.3,-20 L203.5,137.5"/>
-              </g>
-            </g>
-          </svg>
-        </div>
-      </div>
-
-      <div class="specs">
-        <div class="spec reveal">
-          <p class="spec__k">Módulo base</p>
-          <p class="spec__v">1,05 × 0,80 m</p>
-          <p class="spec__d">Encastre rápido tridimensional, de alta precisión.</p>
-        </div>
-        <div class="spec reveal">
-          <p class="spec__k">Estructura</p>
-          <p class="spec__v">Caño de hierro</p>
-          <p class="spec__d">Hierro estructural de alta resistencia, con tratamiento zincado anticorrosión.</p>
-        </div>
-        <div class="spec reveal">
-          <p class="spec__k">Piso</p>
-          <p class="spec__v">Fenólico 25 mm</p>
-          <p class="spec__d">Terciado fenólico de 25 milímetros de espesor.</p>
-        </div>
-        <div class="spec reveal">
-          <p class="spec__k">Altura</p>
-          <p class="spec__v">0,30 a 2,00 m</p>
-          <p class="spec__d">Patas regulables que corrigen desniveles del terreno.</p>
-        </div>
-      </div>
-
-      <div class="build" id="build">
-        <div class="build__pin">
-          <div class="build__panel">
-            <div class="build__copy">
-              <p class="eyebrow"><span class="eyebrow__dot"></span>Anatomía de un escenario</p>
-              <h3 class="build__title">Cómo se arma, capa por capa.</h3>
-
-              <ol class="build__steps" id="buildSteps">
-                <li class="build__step is-on">
-                  <button type="button" data-go="0"><span class="build__n">01</span><span>Patas regulables</span></button>
-                  <div class="build__body"><div>
-                    <p>Cada pata se regula por separado: así se llega a la altura que pide la producción y se corrigen los desniveles del piso.</p>
-                    <p class="build__spec">0,30 – 2,00 m de altura</p>
-                  </div></div>
-                </li>
-                <li class="build__step">
-                  <button type="button" data-go="1"><span class="build__n">02</span><span>Estructura de hierro</span></button>
-                  <div class="build__body"><div>
-                    <p>Caño de hierro estructural de alta resistencia, con tratamiento zincado anticorrosión. Encastre rápido tridimensional, de alta precisión.</p>
-                    <p class="build__spec">Hierro zincado</p>
-                  </div></div>
-                </li>
-                <li class="build__step">
-                  <button type="button" data-go="2"><span class="build__n">03</span><span>Piso fenólico</span></button>
-                  <div class="build__body"><div>
-                    <p>Módulos de terciado fenólico que se combinan para llegar a cualquier superficie, a la medida del salón.</p>
-                    <p class="build__spec">1,05 × 0,80 m · 25 mm</p>
-                  </div></div>
-                </li>
-                <li class="build__step">
-                  <button type="button" data-go="3"><span class="build__n">04</span><span>Terminación</span></button>
-                  <div class="build__body"><div>
-                    <p>Frentín y pollera perimetral en negro mate, alfombrado de alta densidad y ni un herraje a la vista.</p>
-                    <p class="build__spec">Lista para cámara</p>
-                  </div></div>
-                </li>
-                <li class="build__step">
-                  <button type="button" data-go="4"><span class="build__n">05</span><span>Listo para el evento</span></button>
-                  <div class="build__body"><div>
-                    <p>Se entrega con memoria de cálculo firmada por ingeniero matriculado. Vos te ocupás del evento.</p>
-                    <a class="btn btn--primary btn--sm js-wa" href="#" data-wa-default data-umami-event="whatsapp" data-umami-event-lugar="armado">
-                      <svg class="ico-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.27-.2-.57-.34M12.05 21.8a9.87 9.87 0 0 1-5.03-1.38l-.36-.22-3.74.99 1-3.65-.24-.38a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.89-9.89 9.89m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.49-8.4"/></svg>
-                      <span>Pedir presupuesto</span>
-                    </a>
-                  </div></div>
-                </li>
-              </ol>
-            </div>
-
-            <div class="build__art">
-              <svg id="buildSvg" viewBox="-230 -250 560 500" role="img" aria-labelledby="buildTitle">
-                <title id="buildTitle">Escenario modular en vista isométrica que se arma capa por capa: patas regulables, estructura de hierro, piso fenólico y terminación con pollera y alfombra</title>
-              </svg>
-              <div class="build__meter" aria-hidden="true">
-                <span><b id="buildNow">01</b> / 05</span>
-                <span class="build__bar"><i id="buildBar"></i></span>
-              </div>
-            </div>
+      <div class="blueprint">
+        <figure class="blueprint__fig reveal">
+          <div class="blueprint__img" aria-hidden="true">
+            <img src="img/plano-estructura.webp" width="638" height="546" loading="lazy" alt="">
+            <span class="pin" style="--x:81%;--y:55.5%;--i:0" data-pin="1">1</span>
+            <span class="pin" style="--x:76.5%;--y:31.5%;--i:1" data-pin="2">2</span>
+            <span class="pin" style="--x:59.5%;--y:19.5%;--i:2" data-pin="3">3</span>
+            <span class="pin" style="--x:60.3%;--y:75.9%;--i:3" data-pin="4">4</span>
+            <span class="pin" style="--x:64.9%;--y:91.6%;--i:4" data-pin="5">5</span>
           </div>
-        </div>
+          <figcaption class="sr">Plano isométrico de la estructura de un escenario modular, con patas, travesaños de caño de hierro y diagonales de refuerzo. Las referencias numeradas se describen en la lista.</figcaption>
+        </figure>
+
+        <ol class="blueprint__list">
+          <li data-pin="1"><span class="pin-n" aria-hidden="true">1</span><div><h3>Módulo de piso · 1,05&nbsp;×&nbsp;0,80&nbsp;m</h3><p>Terciado fenólico de 25&nbsp;mm de espesor. Los módulos se combinan para llegar a cualquier superficie.</p></div></li>
+          <li data-pin="2"><span class="pin-n" aria-hidden="true">2</span><div><h3>Encastre rápido</h3><p>Sistema tridimensional de encastre, de alta precisión: se arma y se desarma rápido, sin improvisar.</p></div></li>
+          <li data-pin="3"><span class="pin-n" aria-hidden="true">3</span><div><h3>Caño de hierro zincado</h3><p>Hierro estructural de alta resistencia, con tratamiento zincado anticorrosión.</p></div></li>
+          <li data-pin="4"><span class="pin-n" aria-hidden="true">4</span><div><h3>Diagonales de refuerzo</h3><p>Arriostran los laterales y le dan rigidez a toda la estructura.</p></div></li>
+          <li data-pin="5"><span class="pin-n" aria-hidden="true">5</span><div><h3>Patas regulables · 0,30&nbsp;a&nbsp;2,00&nbsp;m</h3><p>Se regulan por separado y corrigen los desniveles del piso.</p></div></li>
+        </ol>
       </div>
+
+      <p class="blueprint__note"><span class="eyebrow__dot"></span>Cada montaje se entrega con memoria de cálculo firmada por ingeniero matriculado.</p>
     </div>
   </section>
 
@@ -298,20 +168,20 @@
           Por eso cada montaje se entrega con la documentación técnica que el salón y la
           producción necesitan tener a mano.
         </p>
-        <p class="safety__note">Este es nuestro diferencial desde hace treinta años, y no lo negociamos por precio.</p>
+        <p class="safety__note">Este es nuestro diferencial desde hace 30 años, y no lo negociamos por precio.</p>
       </div>
 
       <ul class="creds reveal">
         <li>
-          <span class="creds__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6Z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <span class="creds__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6Z"/><path d="M9 12l2 2 4-4"/></svg></span>
           <div><h3>Memoria de cálculo</h3><p>Cada montaje cuenta con una memoria de cálculo detallada que respalda la estructura instalada.</p></div>
         </li>
         <li>
-          <span class="creds__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M8.5 13.5 7 21l5-2.5L17 21l-1.5-7.5"/></svg></span>
+          <span class="creds__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M8.5 13.5 7 21l5-2.5L17 21l-1.5-7.5"/></svg></span>
           <div><h3>Firma de ingeniero matriculado</h3><p>La documentación va avalada por la firma de un ingeniero matriculado. No es un papel de cortesía.</p></div>
         </li>
         <li>
-          <span class="creds__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3s5 4 5 8a5 5 0 0 1-10 0c0-1.5.8-2.8 1.6-3.7C9.5 9 12 7 12 3Z"/></svg></span>
+          <span class="creds__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s5 4 5 8a5 5 0 0 1-10 0c0-1.5.8-2.8 1.6-3.7C9.5 9 12 7 12 3Z"/></svg></span>
           <div><h3>Panelería con certificación ignífuga</h3><p>Los materiales de panelería y cerramientos cuentan con certificación ignífuga oficial.</p></div>
         </li>
       </ul>
@@ -415,7 +285,7 @@
         <a class="way way--wa js-wa reveal" href="#" data-wa-default data-umami-event="whatsapp" data-umami-event-lugar="contacto">
           <span class="way__ico"><svg class="ico-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.27-.2-.57-.34M12.05 21.8a9.87 9.87 0 0 1-5.03-1.38l-.36-.22-3.74.99 1-3.65-.24-.38a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.89-9.89 9.89m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.49-8.4"/></svg></span>
           <span class="way__k">WhatsApp</span>
-          <b class="way__v">11 3332-0622</b>
+          <b class="way__v">11&nbsp;3332-0622</b>
           <span class="way__d">Mandanos un mensaje o un audio. Es la forma más rápida.</span>
           <span class="way__go">Abrir WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
@@ -435,12 +305,12 @@
 <footer class="foot">
   <div class="wrap foot__in">
     <div class="foot__brand">
-      <img src="img/logo.svg" width="1024" height="520" alt="Tarimas y Escenarios S.R.L.">
+      <img src="img/logo.svg" width="1024" height="520" loading="lazy" alt="Tarimas y Escenarios S.R.L.">
       <p>Alquiler, montaje y asesoramiento técnico de escenarios modulares para eventos corporativos y producciones. Desde 1994.</p>
     </div>
     <div class="foot__links">
       <p class="foot__links-t">Contacto</p>
-      <a class="js-wa" href="#" data-wa-default data-umami-event="whatsapp" data-umami-event-lugar="pie">WhatsApp 11 3332-0622</a>
+      <a class="js-wa" href="#" data-wa-default data-umami-event="whatsapp" data-umami-event-lugar="pie">WhatsApp 11&nbsp;3332-0622</a>
       <a href="mailto:tyescenarios@gmail.com" data-umami-event="gmail" data-umami-event-lugar="pie">tyescenarios@gmail.com</a>
     </div>
     <div class="foot__links">
@@ -449,7 +319,7 @@
       <a href="privacidad.html">Política de privacidad</a>
     </div>
   </div>
-  <div class="wrap foot__bar"><span>© Tarimas y Escenarios S.R.L.</span><a href="#top">Volver arriba</a></div>
+  <div class="wrap foot__bar"><span>© <span translate="no">Tarimas y Escenarios S.R.L.</span></span><a href="#top">Volver arriba</a></div>
 </footer>
 
 <a class="wafloat js-wa" href="#" data-wa-default data-umami-event="whatsapp" data-umami-event-lugar="flotante" aria-label="Escribir por WhatsApp al 11 3332-0622">
