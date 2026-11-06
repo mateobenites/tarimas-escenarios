@@ -370,20 +370,27 @@ img, svg { display: block; max-width: 100%; }
 .finish__item p { font-size: 15px; color: var(--muted); }
 
 /* ─────────────────────────────  VENUES  ───────────────────────────── */
+/* Muro de logos en un solo tono: la marca de cada lugar con sus sedes debajo */
 .venues {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
   border-top: 1px solid var(--line);
   border-left: 1px solid var(--line);
   background: var(--surface);
 }
 .venues li {
-  padding: 26px 22px;
+  display: grid; justify-items: center; align-content: center; gap: 14px;
+  padding: 30px 18px 26px; text-align: center;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  font-size: clamp(15px, 1.5vw, 17.5px);
-  font-weight: 500; letter-spacing: -.012em;
-  color: var(--ink);
 }
+.venues__logo { display: grid; place-items: center; height: 56px; width: 100%; }
+.venues__logo img {
+  height: var(--h, 44px); width: auto; max-width: 85%;
+  filter: brightness(0); opacity: .72;
+  transition: opacity .2s;
+}
+.venues li:hover .venues__logo img { opacity: 1; }
+.venues__name { font-size: 14px; font-weight: 500; line-height: 1.4; color: var(--muted); }
 .venues__note {
   margin-top: 20px;
   font-family: var(--mono); font-size: 13px; color: var(--dim); letter-spacing: .03em;
@@ -606,6 +613,10 @@ img, svg { display: block; max-width: 100%; }
   .hero__logo { width: min(100%, 280px); }
   .finish-grid { grid-template-columns: 1fr; }
   .stats { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+  .venues { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .venues li { padding: 24px 12px 20px; }
+  .venues__logo { height: 48px; }
+  .venues__logo img { height: calc(var(--h, 44px) * .85); }
   .steps li { padding-right: 0; }
   .steps li::before { right: 0; }
   .contact__ways { grid-template-columns: 1fr; }

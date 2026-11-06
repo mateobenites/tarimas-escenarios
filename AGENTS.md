@@ -94,7 +94,7 @@ No decide: diseño visual ni contenido de marketing.
 - `styles.css` — tokens de diseño en `:root` y estilos por sección.
 - `script.js` — link de WhatsApp, resaltado conjunto de puntos y leyenda del plano, botón flotante, logo del menú y animaciones de reveal.
 - `terminos.html` y `privacidad.html` — páginas legales, enlazadas desde el footer. Reusan `styles.css` y no cargan `script.js`.
-- `img/` — logo y fotos. Las fotos se recomprimieron a calidad 82 (de 867 KB a ~200 KB la más pesada).
+- `img/` — logo y fotos. Las fotos se recomprimieron a calidad 82 (de 867 KB a ~200 KB la más pesada). `img/lugares/` tiene los logos de los salones (traídos de `main`, recortados y pasados a WebP); se muestran en un solo tono con sus sedes debajo.
 
 ## Próximo paso
 
